@@ -1,0 +1,66 @@
+@import "./../../constants/params.scss";
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrp {
+  width: 300px;
+  //   height: 400px;
+  background-color: $colorSec;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.accent {
+  color: $colorAccentSec;
+  font-weight: 700;
+}
+
+.link {
+  text-decoration: none;
+  background: none;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid rgb(143, 143, 143);
+
+  &:invalid {
+    border-color: red;
+  }
+  &:valid {
+    border-color: green;
+  }
+}
+
+.submit {
+  background-color: $colorAccentSec;
+  border: none;
+  padding: 10px;
+  text-transform: uppercase;
+  color: $colorSec;
+  &:hover {
+    cursor: pointer;
+  }
+}
