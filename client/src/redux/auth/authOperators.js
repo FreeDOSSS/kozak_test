@@ -1,7 +1,7 @@
 import api from "./../../api/api";
 import authActions from "./authAction";
 import { toast } from "react-toastify";
-
+import { hendlerError } from "./../../helpers/hendlerError";
 const signUp = (data) => (dispatch) => {
   dispatch(authActions.signUpStart());
 
@@ -41,8 +41,8 @@ const logOut = () => (dispatch) => {
     .axiosLogOut()
     .then(() => dispatch(authActions.logOutSuccess()))
     .catch((err) => {
-      console.log("err logOut", err);
       dispatch(authActions.logOutFailure(err));
+      hendlerError(err, dispatch);
     });
 };
 

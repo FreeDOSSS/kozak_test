@@ -8,7 +8,8 @@ const authReducer = (state = null, { type, payload }) => {
       return payload.token;
     case authTypes.LOGOUT_SUCCESS:
       return null;
-
+    case authTypes.CLEAR_TOKEN:
+      return null;
     default:
       return state;
   }

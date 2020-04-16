@@ -41,6 +41,10 @@ const logInFailure = (error) => ({
   payload: { error },
 });
 
+const clearToken = () => ({
+  type: authTypes.CLEAR_TOKEN,
+});
+
 export default {
   logInStart,
   logInSuccess,
@@ -51,4 +55,5 @@ export default {
   logOutStart,
   logOutSuccess,
   logOutFailure,
+  clearToken,
 };

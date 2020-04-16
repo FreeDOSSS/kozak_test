@@ -1,23 +1,24 @@
+import "antd/dist/antd.css";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 import { persistor, store } from "./redux/store";
 import * as serviceWorker from "./serviceWorker";
 import "./stylesheet/index.scss";
-import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <PersistGate persistor={persistor} loading={null}> */}
-    <BrowserRouter>
-      <App />
-      <ToastContainer />
-    </BrowserRouter>
-    {/* </PersistGate> */}
+    <PersistGate persistor={persistor} loading={null}>
+      <BrowserRouter>
+        <App />
+        <ToastContainer />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById("root")
 );

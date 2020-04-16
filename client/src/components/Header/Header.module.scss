@@ -1,0 +1,26 @@
+@import "./../../constants/params.scss";
+
+.header {
+  height: 70px;
+  background-color: rgba(124, 124, 124, 0.541);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 50px;
+}
+
+.btn {
+  background: none;
+  border: none;
+  color: $colorSec;
+  display: flex;
+  align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
+  svg {
+    margin-left: 10px;
+    color: $colorAccentSec;
+    font-size: 24px;
+  }
+}
