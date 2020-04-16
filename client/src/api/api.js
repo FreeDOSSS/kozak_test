@@ -9,7 +9,7 @@ const axiosLogIn = (data) => axios.post("/login", data);
 const axiosLogOut = () => axios.post("/logout");
 
 const axiosGetList = ({ limit, fulllName, page }) =>
-  axios.get(`/workers?limit${limit}&page=${page}fullname${fulllName}`);
+  axios.get(`/workers?limit=${limit}&page=${page}&fullname=${fulllName}`);
 
 export default {
   axiosRegister,
