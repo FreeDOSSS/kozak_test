@@ -12,9 +12,8 @@ function login(req, res) {
     res.status(404).json({ message: "Email and password requerd field!" });
     return;
   }
-  Users.findOne({ email }).then((userDb) => {
+  Users.findOne({ where: { email } }).then((userDb) => {
     if (!userDb) return res.status(404).json({ message: "User not find" });
-
     bcrypt.compare(password, userDb.password, (err, valid) => {
       if (err) throw hendlerError("Check password login.js", err);
 

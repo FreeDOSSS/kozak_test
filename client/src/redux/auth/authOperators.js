@@ -1,14 +1,17 @@
 import api from "./../../api/api";
 import authActions from "./authAction";
+import { toast } from "react-toastify";
 
 const signUp = (data) => (dispatch) => {
   dispatch(authActions.signUpStart());
 
   api
     .axiosRegister(data)
-    .then(({ data }) => dispatch(authActions.signUpSuccess(data.token)))
+    .then(({ data }) => dispatch(authActions.signUpSuccess(data)))
     .catch((err) => {
-      console.log("err signUp", err);
+      toast.error(err.response.data.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       dispatch(authActions.signUpFailure(err));
     });
 };
@@ -18,9 +21,15 @@ const logIn = (data) => (dispatch) => {
 
   api
     .axiosLogIn(data)
-    .then(({ data }) => dispatch(authActions.logInSuccess(data.token)))
+    .then(({ data }) => {
+      console.log("data", data);
+      dispatch(authActions.logInSuccess(data));
+    })
     .catch((err) => {
-      console.log("err logIn", err);
+      // console.log("err logIn", err);
+      toast.error(err.response.data.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       dispatch(authActions.logInFailure(err));
     });
 };

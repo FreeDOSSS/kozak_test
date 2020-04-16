@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  sigUp: (credentials) => dispatch(authOperations.signUp(credentials)),
+  signUp: (credentials) => dispatch(authOperations.signUp(credentials)),
   logIn: (credentials) => dispatch(authOperations.logIn(credentials)),
 });
 

@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import router from "../../router";
 import * as style from "./Home.module.scss";
 
-function Home({ isAuth }) {
+function Home({ isAuth, logIn, signUp }) {
   const [task, setTask] = useState("signup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +19,19 @@ function Home({ isAuth }) {
 
   const hendlerForm = (event) => {
     event.preventDefault();
+
+    const data = { email, password };
+
+    switch (task) {
+      case "login":
+        logIn(data);
+        break;
+      case "signup":
+        signUp(data);
+        break;
+      default:
+        return;
+    }
   };
 
   return (
@@ -40,7 +53,7 @@ function Home({ isAuth }) {
           </button>
         </div>
 
-        <form className={style.form}>
+        <form className={style.form} onSubmit={hendlerForm}>
           <input
             type="email"
             value={email}

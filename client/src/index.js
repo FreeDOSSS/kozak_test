@@ -1,20 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
-import "./stylesheet/index.scss";
-import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
-import { store, persistor } from "./redux/store";
+import "react-toastify/dist/ReactToastify.css";
+import { PersistGate } from "redux-persist/integration/react";
+import App from "./App";
+import { persistor, store } from "./redux/store";
+import * as serviceWorker from "./serviceWorker";
+import "./stylesheet/index.scss";
+import { ToastContainer } from "react-toastify";
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor} loading={null}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </PersistGate>
+    {/* <PersistGate persistor={persistor} loading={null}> */}
+    <BrowserRouter>
+      <App />
+      <ToastContainer />
+    </BrowserRouter>
+    {/* </PersistGate> */}
   </Provider>,
   document.getElementById("root")
 );

@@ -2,7 +2,7 @@ import authTypes from "./authTypes";
 
 const authReducer = (state = null, { type, payload }) => {
   switch (type) {
-    case authTypes.REGISTER_SUCCESS:
+    case authTypes.SIGNUP_SUCCESS:
       return payload.token;
     case authTypes.LOGIN_SUCCESS:
       return payload.token;

@@ -7,11 +7,11 @@ axios.defaults.baseURL = params.server_url;
 // axios.defaults.headers.put["Content-Type"] = "application/json";
 
 const axiosRegister = (data) => axios.post("/signup", data);
-const axiosLogin = (data) => axios.post("/login", data);
-const axiosLogOut = () => axios.post("/logout", data);
+const axiosLogIn = (data) => axios.post("/login", data);
+const axiosLogOut = () => axios.post("/logout");
 
 export default {
   axiosRegister,
-  axiosLogin,
+  axiosLogIn,
   axiosLogOut,
 };
