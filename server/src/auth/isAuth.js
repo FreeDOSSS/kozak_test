@@ -16,11 +16,11 @@ function isAuth(req, res, next) {
     Users.findOne({ where: { email } })
       .then(({ dataValues: user }) => {
         if (user.token !== token)
-          res.status(401).json({ message: "Error valid auth" });
+          return res.status(401).json({ message: "Error valid auth" });
+        next();
       })
       .catch((err) => hendlerError("error in find user isAuth.js", err));
   });
-  next();
 }
 
 module.exports = isAuth;

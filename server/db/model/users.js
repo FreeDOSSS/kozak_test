@@ -10,14 +10,14 @@ const Users = sequelize.define(
       type: Sequelize.INTEGER,
     },
     email: {
-      type: Sequelize.STRING(1234),
+      type: Sequelize.STRING,
       //   allowNull: false,
     },
     password: {
-      type: Sequelize.STRING(1234),
+      type: Sequelize.STRING,
     },
     token: {
-      type: Sequelize.STRING(1234),
+      type: Sequelize.STRING,
     },
   },
   {

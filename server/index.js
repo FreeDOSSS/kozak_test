@@ -4,7 +4,7 @@ const logger = require("morgan");
 const cors = require("cors");
 const router = require("./src/router");
 const sequelize = require("./db/connect");
-
+const { port } = require("./config/params");
 // sequelize.sync({ force: true });
 sequelize.sync();
 sequelize
@@ -23,7 +23,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(router);
-
-const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server start, port ${port}`));

@@ -21,11 +21,11 @@ function login(req, res) {
       if (!valid)
         return res.status(400).json({ message: "Неверный логин или пароль" });
 
-      const token = jwt.sign({ email }, secretKey, { expiresIn: "1m" });
+      const token = jwt.sign({ email }, secretKey, { expiresIn: "60m" });
 
       Users.update({ token }, { where: { email } })
         .then(() => {
-          res.status(200).json({ token: `Bearer ${token}` });
+          return res.status(200).json({ token: `Bearer ${token}` });
         })
         .catch((err) => hendlerError("Error update token login.js", err));
     });
