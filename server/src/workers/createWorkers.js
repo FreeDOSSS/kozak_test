@@ -12,7 +12,7 @@ function createWorker(req, res) {
     contact,
     dob,
     status,
-    salary: Number(salary.replace(/\s/g, "")),
+    salary: salary,
   };
 
   Workers.create(user)
