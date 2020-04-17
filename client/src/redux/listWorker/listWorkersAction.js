@@ -1,7 +1,5 @@
 import listWorkersTypes from "./listWorkersTypes";
 
-console.log("listWorkersTypes", listWorkersTypes);
-
 const getListWorkersStart = () => ({
   type: listWorkersTypes.GETLISTWORKERS_START,
 });
@@ -15,8 +13,39 @@ const getListWorkerFailure = (error) => ({
   payload: { error },
 });
 
+const deleteWorkersStart = () => ({
+  type: listWorkersTypes.DELETEWORKERS_START,
+});
+
+const deleteWorkersSuccess = ({ message }) => ({
+  type: listWorkersTypes.DELETEWORKERS_SUCCESS,
+  payload: { message },
+});
+
+const deleteWorkersFailure = () => ({
+  type: listWorkersTypes.DELETEWORKERS_FAILURE,
+});
+
+const saveWorkersStart = () => ({
+  type: listWorkersTypes.SAVEWORKERS_START,
+});
+
+const saveWorkersSuccess = () => ({
+  type: listWorkersTypes.SAVEWORKERS_SUCCESS,
+});
+
+const saveWorkersFailure = () => ({
+  type: listWorkersTypes.SAVEWORKERS_FAILURE,
+});
+
 export default {
   getListWorkersStart,
   getListWorkerSuccess,
   getListWorkerFailure,
+  deleteWorkersStart,
+  deleteWorkersSuccess,
+  deleteWorkersFailure,
+  saveWorkersStart,
+  saveWorkersSuccess,
+  saveWorkersFailure,
 };

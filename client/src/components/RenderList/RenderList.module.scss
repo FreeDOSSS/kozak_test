@@ -1,0 +1,28 @@
+@import "./../../constants/params.scss";
+
+.title {
+  text-align: center;
+  padding: 20px 0;
+  color: $colorSec;
+  margin-bottom: 20px;
+}
+
+.table {
+  margin: auto;
+  border-collapse: collapse;
+  padding-top: 40px;
+  color: transparentize($colorSec, 0.2);
+}
+
+th,
+td {
+  padding: 5px 10px;
+  border: 1px solid $colorSec;
+}
+
+.edit {
+  color: $colorAccentSec;
+}
+.del {
+  color: $colorAccentPri;
+}

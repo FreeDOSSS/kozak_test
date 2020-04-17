@@ -20,3 +20,24 @@ code {
 * {
   box-sizing: border-box;
 }
+
+button {
+  border: none;
+  background: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ant-pagination {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.ant-input-group-wrapper {
+  width: 500px;
+  margin: auto;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+}

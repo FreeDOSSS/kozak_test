@@ -3,6 +3,11 @@ import withAuthRedirect from "./../../HOC/WithAuthRedirect";
 import { connect } from "react-redux";
 import Workers from "./Workers";
 import listWorkersOperators from "./../../redux/listWorker/listWorkersOperators";
+import { countAllWorkers } from "../../redux/listWorker/listWorkersSelector";
+
+const mapStateToProps = (state) => ({
+  total: countAllWorkers(state),
+});
 
 const mapDispatchToProps = (dispatch) => ({
   getListWorkers: (data) => dispatch(listWorkersOperators.getListWorkers(data)),
@@ -10,5 +15,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default compose(
   withAuthRedirect,
-  connect(null, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps)
 )(Workers);
