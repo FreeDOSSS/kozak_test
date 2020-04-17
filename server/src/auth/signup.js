@@ -18,7 +18,7 @@ function signup(req, res) {
       if (data.length > 0) {
         res.status(400).json({ message: "Email занят" });
       } else {
-        const token = jwt.sign({ email }, secretKey, { expiresIn: "10m" });
+        const token = jwt.sign({ email }, secretKey);
         const newUser = {
           email,
           password: hash,

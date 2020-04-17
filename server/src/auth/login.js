@@ -20,7 +20,7 @@ function login(req, res) {
       if (!valid)
         return res.status(400).json({ message: "Неверный логин или пароль" });
 
-      const token = jwt.sign({ email }, secretKey, { expiresIn: "60m" });
+      const token = jwt.sign({ email }, secretKey);
 
       Users.update({ token }, { where: { email } })
         .then(() => {
