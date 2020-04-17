@@ -79,11 +79,12 @@ function EditWorker({ update, show, onClose, item, id, saveEdit }) {
           <InputNumber />
         </Form.Item>
 
-        <Form.Item name="dob" label="Дата рождения">
+        <Form.Item name="dob" label="Дата рождения"  rules={[{ required: true, message: "Введите дату" }]}>
           <DatePicker />
         </Form.Item>
 
-        <Form.Item name="gender">
+        <Form.Item name="gender"
+        rules={[{ required: true, message: "Введите пол" }]}>
           <Radio.Group>
             <Radio value="male">М</Radio>
             <Radio value="female">Ж</Radio>
