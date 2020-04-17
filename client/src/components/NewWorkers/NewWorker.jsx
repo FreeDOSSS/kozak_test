@@ -87,19 +87,22 @@ function NewWorker({ sendWorker, fnUpdate }) {
             <InputNumber />
           </Form.Item>
 
-          <Form.Item name="dob" label="Дата рождения">
+          <Form.Item
+            name="dob"
+            rules={[{ required: true, message: "Введите дату" }]}
+            label="Дата рождения"
+          >
             <DatePicker format="YYYY-MM-DD" />
           </Form.Item>
 
           <Form.Item
             name="gender"
-            // className="collection-create-form_last-form-item"
+            rules={[{ required: true, message: "Введите пол" }]}
           >
             <Radio.Group>
               <Radio value="male">М</Radio>
               <Radio value="female">Ж</Radio>
             </Radio.Group>
-            {/* </Radio> */}
           </Form.Item>
 
           <Form.Item>

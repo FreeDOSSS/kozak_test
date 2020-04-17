@@ -17,6 +17,10 @@ function Workers({ getListWorkers, total }) {
     getListWorkers({ page, limit, fullName });
   }, [page, limit, fullName]);
 
+  useEffect(() => {
+    getListWorkers({ page, limit, fullName });
+  }, []);
+
   const updateList = () => getListWorkers({ page, limit, fullName });
 
   const onShowSizeChange = (current, pageSize) => setlimit(pageSize);
