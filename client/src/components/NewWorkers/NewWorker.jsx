@@ -51,7 +51,6 @@ function NewWorker({ sendWorker, fnUpdate }) {
           name="new"
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 14 }}
-          initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
         >

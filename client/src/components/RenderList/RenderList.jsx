@@ -8,9 +8,11 @@ import React, { useState } from "react";
 import shortid from "shortid";
 import * as style from "./RenderList.module.scss";
 import { Modal } from "antd";
+import EditWorker from "../EditWorker";
 
 function RenderList({ list, del, fnUpdate }) {
   const [visibleDelModal, setVisibleDelModal] = useState(false);
+  const [editId, setEditId] = useState("");
 
   const formateDate = (data) => {
     const date = new Date(data);
@@ -31,6 +33,13 @@ function RenderList({ list, del, fnUpdate }) {
       cancelText: "Отмена",
     });
   };
+
+  const onEdit = ({ currentTarget }) => {
+    setEditId(currentTarget.dataset.id);
+    setVisibleDelModal(true);
+  };
+
+  const onClose = () => setVisibleDelModal(false);
 
   return (
     <>
@@ -61,7 +70,11 @@ function RenderList({ list, del, fnUpdate }) {
                 <td>{el.status}</td>
                 <td>{formateDate(el.createdAt)}</td>
                 <td>
-                  <button className={clsx(style.btn, style.edit)}>
+                  <button
+                    data-id={el.id}
+                    onClick={onEdit}
+                    className={clsx(style.btn, style.edit)}
+                  >
                     <EditOutlined />
                   </button>
                   <button
@@ -76,14 +89,12 @@ function RenderList({ list, del, fnUpdate }) {
             ))}
         </tbody>
       </table>
-      {/* <Modal
-        title="Удалить?"
-        visible={visibleDelModal}
-        onOk={hideModal}
-        onCancel={hideModal}
-        okText="Ok"
-        cancelText="Cancle"
-      /> */}
+      <EditWorker
+        update={fnUpdate}
+        show={visibleDelModal}
+        onClose={onClose}
+        id={editId}
+      />
     </>
   );
 }

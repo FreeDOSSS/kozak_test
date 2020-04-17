@@ -14,6 +14,7 @@ const axiosGetList = ({ limit, fullName, page }) =>
 const axiosDeleteWorker = (id) => axios.delete(`/workers?id=${id}`);
 
 const axiosSave = (data) => axios.post("/workers", data);
+const axiosEdit = (data) => axios.patch("/workers", data);
 
 export default {
   axiosRegister,
@@ -22,4 +23,5 @@ export default {
   axiosGetList,
   axiosDeleteWorker,
   axiosSave,
+  axiosEdit,
 };

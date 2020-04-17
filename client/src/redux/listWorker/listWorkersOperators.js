@@ -58,9 +58,30 @@ const saveWorker = (data) => (dispatch) => {
       hendlerError(err, dispatch);
     });
 };
+const editWorker = (data) => (dispatch) => {
+  dispatch(listWorkersActions.saveWorkersStart());
+
+  api
+    .axiosEdit(data)
+    .then(({ data }) => {
+      toast.success("Seved", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      dispatch(listWorkersActions.saveWorkersSuccess());
+    })
+    .catch((err) => {
+      toast.error(err.response.data.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      dispatch(listWorkersActions.saveWorkersFailure());
+
+      hendlerError(err, dispatch);
+    });
+};
 
 export default {
   getListWorkers,
   deleteWorkers,
   saveWorker,
+  editWorker,
 };
