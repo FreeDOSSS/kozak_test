@@ -16,7 +16,10 @@ const Users = sequelize.define(
     password: {
       type: Sequelize.STRING,
     },
-    token: {
+    accessToken: {
+      type: Sequelize.STRING,
+    },
+    refreshToken: {
       type: Sequelize.STRING,
     },
   },

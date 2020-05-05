@@ -1,14 +1,15 @@
 const jwt = require("jsonwebtoken");
-const { secretKey } = require("./../../config/params");
+const { secretKey_access } = require("./../../config/params");
 const Users = require("./../../db/model/users");
 const hendlerError = require("./../../helpers/hendlerError");
 
 function isAuth(req, res, next) {
+  console.log("req.body", req.body);
   if (!req.headers.authorization)
     return res.status(404).json({ message: "You needed send token" });
 
   const token = req.headers.authorization.replace("Bearer ", "");
-  jwt.verify(token, secretKey, (err, decode) => {
+  jwt.verify(token, secretKey_access, (err, decode) => {
     if (err) return res.status(401).json({ message: "Not authorized" });
 
     const { email } = decode;
