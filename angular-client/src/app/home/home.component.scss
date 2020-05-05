@@ -1,0 +1,54 @@
+.wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__label {
+    margin-bottom: 5px;
+  }
+
+  &__input {
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+  &__submit {
+    padding: 5px;
+    color: #fff;
+    background-color: tomato;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:disabled {
+      background-color: #ccc;
+    }
+  }
+}
+
+.alert {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  &--danger {
+    background-color: rgba(255, 0, 0, 0.37);
+    border: 1px solid rgba(255, 0, 0, 0.63);
+  }
+}
