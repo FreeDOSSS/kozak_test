@@ -23,7 +23,7 @@ function refreshToken(req, res) {
         expiresIn: "5s",
       });
       const refreshToken = jwt.sign({ email }, secretKey_refresh, {
-        expiresIn: "10s",
+        expiresIn: "1m",
       });
 
       Users.update({ accessToken, refreshToken }, { where: { email } }).then(

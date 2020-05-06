@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 interface Auth {
   accessToken: string;
@@ -32,9 +33,20 @@ export class AuthService {
   }
 
   refreshAccessToken() {
-    return this.http.post('http://localhost:5000/refreshtoken', null, {
-      headers: { Authorization: localStorage.getItem('refresh-token') },
-    });
+    console.log('refresh');
+    this.http
+      .post('http://localhost:5000/refreshtoken', null, {
+        headers: { Authorization: localStorage.getItem('refresh-token') },
+      })
+      .subscribe(
+        () => {
+          console.log('rer req');
+        },
+        (err) => console.log('err1', err),
+        () => {
+          console.log('com');
+        }
+      );
   }
 
   logOut() {
