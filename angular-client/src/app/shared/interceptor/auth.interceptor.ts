@@ -25,6 +25,9 @@ export class AuthInterceptor implements HttpInterceptor {
         if (!this.refreshTokenInProgress) {
           this.refreshTokenInProgress = true;
           this.auth.refreshAccessToken();
+
+          // TODO отловить ошибку рефреша
+
           // .subscribe({
           //   next: (res) => {
           //     console.log('1');
