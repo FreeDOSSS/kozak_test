@@ -16,7 +16,7 @@ function isAuth(req, res, next) {
 
     Users.findOne({ where: { email } })
       .then(({ dataValues: user }) => {
-        if (user.token !== token)
+        if (user.accessToken !== token)
           return res.status(401).json({ message: "Error valid auth" });
         next();
       })

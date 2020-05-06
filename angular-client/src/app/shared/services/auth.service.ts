@@ -37,8 +37,13 @@ export class AuthService {
     });
   }
 
+  logOut() {
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('refresh-token');
+    this.router.navigate(['/']);
+  }
+
   getAccessToken(): string {
-    console.log('Set Token header');
     return localStorage.getItem('access-token');
   }
 }

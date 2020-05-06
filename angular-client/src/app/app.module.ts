@@ -18,7 +18,14 @@ import { WorkersModule } from './home/workers/workers.module';
     HomeModule,
     WorkersModule,
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

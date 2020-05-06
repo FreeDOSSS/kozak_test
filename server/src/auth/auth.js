@@ -26,10 +26,10 @@ function auth(req, res) {
           return res.status(400).json({ message: "Неверный логин или пароль" });
 
         const accessToken = jwt.sign({ email }, secretKey_access, {
-          expiresIn: "1m",
+          expiresIn: "5s",
         });
         const refreshToken = jwt.sign({ email }, secretKey_refresh, {
-          expiresIn: "1d",
+          expiresIn: "10s",
         });
 
         Users.update({ accessToken, refreshToken }, { where: { email } })

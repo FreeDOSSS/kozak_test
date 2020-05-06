@@ -10,11 +10,11 @@ import { AuthInterceptor } from 'src/app/shared/interceptor/auth.interceptor';
   declarations: [WorkersComponent],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true,
+    // },
   ],
 })
 export class WorkersModule {}
