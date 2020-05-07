@@ -22,30 +22,17 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((err, obs) => {
+        if (err.url.includes('refreshtoken')) {
+          this.auth.logOut();
+        }
+
         if (!this.refreshTokenInProgress) {
           this.refreshTokenInProgress = true;
-          this.auth.refreshAccessToken();
-
-          // TODO отловить ошибку рефреша
-
-          // .subscribe({
-          //   next: (res) => {
-          //     console.log('1');
-          //     setTimeout(() => {
-          //       console.log('3000');
-          //       this.auth.setToken(res);
-          //       this.refreshTokenInProgress = false;
-          //       this.refreshTokenSubject.next(true);
-          //     }, 3000);
-          //   },
-          //   error: (err) => {
-          //     console.log(err);
-          //     this.auth.logOut();
-          //   },
-          //   complete: () => {
-          //     console.log('complite');
-          //   },
-          // });
+          this.auth.refreshAccessToken().subscribe((res) => {
+            this.auth.setToken(res);
+            this.refreshTokenInProgress = false;
+            this.refreshTokenSubject.next(true);
+          });
         }
 
         return this.refreshTokenSubject.pipe(

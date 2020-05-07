@@ -1,13 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
-import { AuthService } from './shared/services/auth.service';
-import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { WorkersModule } from './home/workers/workers.module';
+import { IsActiveGuard } from './shared/guard/isAuth.guard';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +17,7 @@ import { WorkersModule } from './home/workers/workers.module';
     HomeModule,
     WorkersModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, IsActiveGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -12,8 +12,6 @@ interface Auth {
   providedIn: 'root',
 })
 export class AuthService {
-  private token: string = localStorage.getItem('token') || null;
-
   constructor(private http: HttpClient, private router: Router) {}
 
   auth(data) {
@@ -33,20 +31,9 @@ export class AuthService {
   }
 
   refreshAccessToken() {
-    console.log('refresh');
-    this.http
-      .post('http://localhost:5000/refreshtoken', null, {
-        headers: { Authorization: localStorage.getItem('refresh-token') },
-      })
-      .subscribe(
-        () => {
-          console.log('rer req');
-        },
-        (err) => console.log('err1', err),
-        () => {
-          console.log('com');
-        }
-      );
+    return this.http.post('http://localhost:5000/refreshtoken', null, {
+      headers: { Authorization: localStorage.getItem('refresh-token') },
+    });
   }
 
   logOut() {
